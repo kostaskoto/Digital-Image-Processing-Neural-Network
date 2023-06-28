@@ -1,16 +1,19 @@
 import torch
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image
-import random
+import idx2numpy
+import math
 
-from mnist import MNIST
+file = './data/train-images.idx3-ubyte'
+legend = './data/train-labels.idx1-ubyte'
+arr = idx2numpy.convert_from_file(file)
+arr2 = idx2numpy.convert_from_file(legend)
 
-mndata = MNIST('./data')
-mndata.gz = True
+f, imgplot = plt.subplots(10,10)
 
-images, labels = mndata.load_training()
+for i in range(10):
+    for j in range(10):
+        imgplot[i,j].imshow(arr[i*10+j], cmap='gray')
+        imgplot[i,j].text(1, 1, arr2[i*10+j], bbox={'facecolor': 'white'})
 
-index = random.randrange(0, len(images))  # choose an index ;-)
-print(mndata.display(images[index]))
-
+plt.show()
