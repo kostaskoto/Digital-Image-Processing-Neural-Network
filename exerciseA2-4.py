@@ -106,7 +106,7 @@ for epoch in range(num_epochs):
         accT.append(acc)
         lossT.append(loss.item())
         print(f"Epoch [{epoch+1}/{num_epochs}]: test accuracy of the model on the test images: {acc} %")
-        print(f"Epoch [{epoch+1}/{num_epochs}]: test loss of the model: {loss.item():.4f}")
+        print(f"Epoch [{epoch+1}/{num_epochs}]: loss of the model: {loss.item():.4f}")
 
 # Print graphs of the accuracy and loss
 plt.plot(accT)
